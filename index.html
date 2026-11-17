@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Studio Name — PHP website security and modernisation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--bg2:#EFF6FF;--cd:#EFF6FF;--li:#1877F2;--tx:#111827;--mu:#64748B;--bd:#E5E7EB;color-scheme:light;box-sizing:border-box}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--tx);font:400 16px/1.55 'Space Grotesk',Inter,system-ui,sans-serif;overflow-x:clip;padding-bottom:env(safe-area-inset-bottom,0px);-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;z-index:99;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--li);outline-offset:3px}
+.w{max-width:1440px;margin:auto;padding:0 clamp(20px,4vw,56px)}
+section{padding:clamp(80px,11vw,170px) 0;position:relative}
+h1,h2{text-transform:uppercase;letter-spacing:-.045em;line-height:.92;font-weight:700}
+h2{font-size:clamp(34px,6.4vw,104px)}
+.line{display:block;overflow:hidden;padding-bottom:.08em}.line>span{display:block}
+.a{color:var(--li);font-style:normal}
+.k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.btn{display:inline-flex;gap:10px;align-items:center;justify-content:center;padding:15px 26px;border-radius:999px;font-weight:500;border:1px solid var(--bd);background:transparent;transition:background .3s,color .3s,border-color .3s}
+.btn:hover{border-color:var(--li);color:var(--li)}.btn.p{background:var(--li);color:#FFFFFF;border-color:var(--li)}.btn.p:hover{background:var(--tx);border-color:var(--tx);color:#FFFFFF}
+.btn svg{transition:translate .3s}.btn:hover svg{translate:3px -3px}
+nav{position:fixed;z-index:50;left:50%;translate:-50% 0;top:calc(14px + env(safe-area-inset-top,0px));width:min(1200px,calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;padding:10px 10px 10px 22px;border-radius:999px;border:1px solid transparent;transition:background .4s,border-color .4s}
+nav.s{background:rgba(255,255,255,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--bd)}
+.lg{font-weight:700;letter-spacing:-.02em}.nl{display:flex;gap:4px}
+.nl a{padding:8px 14px;border-radius:99px;font-size:14px;color:var(--mu);position:relative;transition:color .3s}.nl a.on,.nl a:hover{color:var(--tx)}
+.nl a.on::after{content:"";position:absolute;left:50%;bottom:1px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--li)}
+.nr{display:flex;align-items:center;gap:8px}.nr .btn{padding:11px 20px;font-size:14px}
+.bgr{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--bd);background:transparent;position:relative}
+.bgr span{position:absolute;left:13px;right:13px;height:2px;background:var(--tx);transition:.4s}.bgr span:first-child{top:18px}.bgr span:last-child{top:24px}
+.bgr[aria-expanded=true] span:first-child{top:21px;rotate:45deg}.bgr[aria-expanded=true] span:last-child{top:21px;rotate:-45deg}
+.menu{position:fixed;inset:0;z-index:45;background:var(--bg);display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 28px;clip-path:circle(0 at calc(100% - 40px) 40px);visibility:hidden;transition:clip-path .6s cubic-bezier(.7,0,.2,1),visibility 0s .6s}
+.menu.o{clip-path:circle(150% at calc(100% - 40px) 40px);visibility:visible;transition:clip-path .6s cubic-bezier(.7,0,.2,1),visibility 0s}
+.menu a{font-size:clamp(38px,12vw,68px);font-weight:700;text-transform:uppercase;letter-spacing:-.04em;line-height:1.05}.menu a:last-child{color:var(--li)}
+@media(max-width:899px){.nl,.nr .btn{display:none}.bgr{display:block}}
+.hero{padding:0;overflow:clip;background:radial-gradient(40% 35% at 50% 40%,rgba(24,119,242,.09),transparent 70%),var(--bg)}
+.hi{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:110px;padding-bottom:clamp(36px,6vh,70px);position:relative;z-index:2}
+.h1{font-size:clamp(28px,4.4vw,64px);text-transform:none;letter-spacing:-.035em;line-height:1.08;max-width:1200px}.ill-h{width:min(520px,88vw);margin:0 auto clamp(22px,4vh,40px)}.ill-h svg{width:100%;height:auto;display:block;overflow:visible}
+.hp{max-width:620px;color:var(--mu);font-size:clamp(16px,1.4vw,19px);margin:clamp(18px,2.5vh,28px) auto clamp(24px,3.5vh,36px)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.fm{position:absolute;z-index:1;pointer-events:none}.f1{top:14%;right:3vw;width:min(34vw,470px)}.f2{bottom:22%;right:14vw;width:min(26vw,360px)}
+@media(max-width:899px){.f1{width:64vw;top:12%;opacity:.45}.f2{display:none}}
+.sc{position:absolute;right:clamp(20px,4vw,56px);bottom:36px;width:1px;height:56px;background:var(--bd);overflow:hidden;z-index:2}
+.sc::after{content:"";position:absolute;left:0;top:-50%;width:1px;height:50%;background:var(--li);animation:sc 1.8s infinite}@keyframes sc{to{top:100%}}
+.bf{border:1px solid var(--bd);border-radius:14px;background:#FFFFFF;overflow:hidden;box-shadow:0 30px 80px rgba(17,24,39,.12)}
+.bb{display:flex;gap:6px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--bd)}.bb i{width:8px;height:8px;border-radius:50%;background:#E5E7EB}
+.bb b{margin-left:10px;flex:1;font-size:11px;font-weight:400;color:var(--mu);background:var(--cd);padding:5px 10px;border-radius:6px}
+.bd{display:flex;gap:12px;padding:12px;aspect-ratio:16/10}.sd{width:16%;display:grid;gap:8px;align-content:start}.sd u{height:8px;border-radius:4px;background:#E5E7EB}.sd u:first-child{background:var(--li)}
+.mn{flex:1;display:flex;flex-direction:column;gap:10px}.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.kp s{height:34px;border-radius:8px;background:#EFF6FF;border:1px solid var(--bd)}
+.ch{flex:1;display:flex;align-items:flex-end;gap:6%;padding:8px;border-radius:8px;background:#EFF6FF}.ch em{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(var(--li),transparent)}
+.orb{position:absolute;right:-10vw;top:8%;width:50vw;height:50vw;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(24,119,242,.2),transparent 65%);pointer-events:none}
+.sw{font-size:clamp(30px,5.6vw,92px);font-weight:700;text-transform:uppercase;letter-spacing:-.04em;line-height:1;max-width:1200px;position:relative}
+.w1{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-right:.22em}.w1>span{display:inline-block}
+.in2{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:70px;align-items:end;position:relative}.in2 p{color:var(--mu);max-width:520px;font-size:18px}
+.st4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:70px;border-top:1px solid var(--bd);padding-top:32px;position:relative}
+.st4 b{display:block;font-size:clamp(34px,5vw,72px);letter-spacing:-.05em;line-height:1;margin-bottom:8px}.st4 span{color:var(--mu);font-size:14px}
+.note{margin-top:22px}
+@media(max-width:899px){.in2{grid-template-columns:1fr}.st4{grid-template-columns:1fr 1fr}}
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:70px}
+@media(max-width:1099px){.sg{grid-template-columns:1fr 1fr}}@media(max-width:699px){.sg{grid-template-columns:1fr}}
+.cd{background:var(--cd);border:1px solid var(--bd);border-radius:18px;padding:28px;min-height:340px;display:flex;flex-direction:column;transition:translate .4s,border-color .4s,box-shadow .4s;position:relative;overflow:hidden}
+.cd:hover{translate:0 -8px;border-color:var(--li);box-shadow:0 24px 60px rgba(17,24,39,.12)}
+.cd h3{font-size:26px;letter-spacing:-.03em;line-height:1.05;margin:auto 0 10px;text-transform:uppercase}.cd p{color:var(--mu);font-size:15px}
+.ar{position:absolute;top:24px;right:24px;transition:translate .4s,color .4s}.cd:hover .ar{translate:5px -5px;color:var(--li)}
+.ill{display:flex;align-items:flex-end;gap:6px;height:90px;margin:30px 0 20px}.ill i{flex:1;background:#E5E7EB;border-radius:4px;transition:background .4s}.cd:hover .ill i{background:var(--li)}.ill i:nth-child(2){transition-delay:.05s}.ill i:nth-child(3){transition-delay:.1s}.ill i:nth-child(4){transition-delay:.15s}.ill i:nth-child(5){transition-delay:.2s}
+.pw{margin-top:60px}.tr{display:flex;flex-direction:column;gap:70px;padding:0 clamp(20px,4vw,56px)}
+.pj{display:grid;grid-template-columns:1fr;gap:28px}.mw{position:relative}
+.ph{position:absolute;right:-2%;bottom:-6%;width:22%;aspect-ratio:9/17;border:1px solid var(--bd);border-radius:20px;background:#FFFFFF;padding:10px;display:grid;gap:8px;align-content:start;box-shadow:0 20px 50px rgba(17,24,39,.12)}
+.ph s{height:16px;border-radius:5px;background:#EFF6FF}.ph em{height:60px;border-radius:6px;background:linear-gradient(var(--li),transparent);opacity:.7}
+.pi h3{font-size:clamp(32px,4vw,64px);letter-spacing:-.045em;text-transform:uppercase;line-height:.95;margin:10px 0 14px}.pi p{color:var(--mu);max-width:380px}
+.tag{display:inline-block;border:1px solid var(--bd);border-radius:99px;padding:5px 12px;font-size:12px;margin:14px 8px 0 0}
+.vw{margin-top:50px}
+@media(min-width:900px) and (prefers-reduced-motion:no-preference){.pw{height:100vh;overflow:hidden;display:flex;align-items:center;margin-top:0}.tr{flex:none;flex-direction:row;gap:7vw;padding:0 11vw;will-change:transform}.pj{flex:0 0 76vw;grid-template-columns:1.5fr 1fr;align-items:center;gap:3vw}}
+.wg{display:grid;grid-template-columns:1.1fr 1fr;gap:6vw;align-items:start;margin-top:0}.wg>div:first-child p{color:var(--mu);font-size:19px;max-width:480px;margin-top:36px}
+.fb{border-top:1px solid var(--bd);padding:30px 0;display:grid;grid-template-columns:70px 1fr;gap:10px}.fb .n,.st .n{color:var(--li);font-weight:700}
+.fb h3{font-size:28px;letter-spacing:-.03em;margin-bottom:6px}.fb p{color:var(--mu);max-width:440px}
+@media(max-width:899px){.wg{grid-template-columns:1fr;gap:30px}}
+.pp{display:grid;gap:40px;margin-top:50px}.pl ol{display:none}
+.st{border-top:1px solid var(--bd);padding:30px 0;display:grid;grid-template-columns:70px 1fr}
+.st h3{font-size:clamp(28px,4vw,56px);letter-spacing:-.04em;text-transform:uppercase;line-height:1}.st p{color:var(--mu);max-width:460px;margin-top:10px}.vz{grid-column:2;height:110px;margin-top:20px;border-radius:14px;border:1px solid var(--bd)}
+@media(min-width:900px) and (prefers-reduced-motion:no-preference){
+#process{height:100vh;padding:0;display:flex;align-items:center}.pp{grid-template-columns:1fr 1.2fr;align-items:center;margin-top:0}
+.pl ol{display:block;list-style:none;margin-top:44px;position:relative;padding-left:30px}
+.pl ol::before{content:"";position:absolute;left:5px;top:20px;bottom:20px;width:1px;background:var(--bd)}
+.pl ol i{position:absolute;left:5px;top:20px;bottom:20px;width:1px;background:var(--li);transform:scaleY(0);transform-origin:top}
+.pl li{font-size:20px;font-weight:700;letter-spacing:-.02em;color:#64748B;padding:12px 0;transition:color .4s;position:relative;text-transform:uppercase}
+.pl li::before{content:"";position:absolute;left:-30px;top:50%;width:11px;height:11px;margin-top:-5px;border-radius:50%;background:var(--bg);border:1px solid #64748B;transition:.4s}
+.pl li.on{color:var(--tx)}.pl li.on::before{background:var(--li);border-color:var(--li)}
+.ss{position:relative;height:56vh}.st{position:absolute;inset:0;border:0;align-content:center;opacity:0;translate:0 40px;transition:opacity .6s,translate .6s;pointer-events:none}.st.on{opacity:1;translate:0 0}.vz{height:min(30vh,260px)}}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:60px}@media(max-width:999px){.pg{grid-template-columns:1fr}}
+.pc{background:var(--cd);border:1px solid var(--bd);border-radius:20px;padding:34px;display:flex;flex-direction:column;transition:translate .4s,box-shadow .4s}.pc:hover{translate:0 -8px;box-shadow:0 24px 60px rgba(17,24,39,.12)}
+.pc.rec{border-color:var(--li);background:linear-gradient(180deg,rgba(24,119,242,.1),var(--cd) 60%)}
+.pc h3{font-size:15px;letter-spacing:.1em;color:var(--mu);display:flex;justify-content:space-between;align-items:center}.pc.rec h3 span{color:#FFFFFF;background:var(--li);border-radius:99px;padding:3px 10px;font-size:11px}
+.pr{font-size:clamp(48px,5vw,76px);font-weight:700;letter-spacing:-.05em;margin:14px 0 24px}.pr.ct{font-size:clamp(32px,3vw,44px);letter-spacing:-.04em;line-height:1.1}
+.pc ul{list-style:none;display:grid;gap:10px;margin-bottom:34px;color:var(--mu)}.pc li::before{content:"✓";color:var(--li);margin-right:10px}.pc .btn{margin-top:auto}
+.tt{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-top:50px}.tt::-webkit-scrollbar{display:none}
+.tc{flex:0 0 min(520px,86%);scroll-snap-align:start;background:var(--cd);border:1px solid var(--bd);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:26px;min-height:320px}
+.tc p{font-size:clamp(18px,1.7vw,24px);letter-spacing:-.02em;line-height:1.3}.tc footer{margin-top:auto;display:flex;gap:14px;align-items:center}.av{width:48px;height:48px;border-radius:50%;background:#FFFFFF;display:grid;place-items:center;font-weight:700;color:var(--li)}
+.tc small{display:block;color:var(--mu)}.tc footer .btn{padding:10px 16px;margin-left:auto;flex:none}.ans a{color:var(--li);text-decoration:underline;text-underline-offset:3px}.ctl{display:flex;gap:10px;margin-top:22px;align-items:center}.ctl .btn{padding:10px 18px}
+.fa{border-top:1px solid var(--bd)}.fa:last-child{border-bottom:1px solid var(--bd)}
+.fa button{width:100%;display:flex;justify-content:space-between;gap:20px;text-align:left;background:none;border:0;padding:26px 0;font-size:clamp(18px,2vw,28px);font-weight:500;letter-spacing:-.02em}
+.fa button i{font-style:normal;color:var(--li);font-size:28px;line-height:1;transition:rotate .4s}.fa.o button i{rotate:45deg}
+.ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s}.fa.o .ans{grid-template-rows:1fr}.ans>div{overflow:hidden}.ans p{color:var(--mu);max-width:640px;padding-bottom:26px}
+.fl{max-width:900px;margin:50px auto 0}
+.fin{overflow:clip;background:radial-gradient(50% 60% at 20% 30%,rgba(24,119,242,.25),transparent 70%),radial-gradient(40% 50% at 85% 80%,rgba(24,119,242,.12),transparent 70%),var(--bg2);background-size:140% 140%,140% 140%,auto;animation:bg 14s ease-in-out infinite alternate}@keyframes bg{to{background-position:100% 100%,0 0,0 0}}
+.fin h2{font-size:clamp(36px,8vw,136px);position:relative}.fin p{color:var(--mu);font-size:clamp(17px,1.6vw,22px);margin:34px 0 40px;max-width:560px;position:relative}.btn.big{padding:26px 44px;font-size:clamp(18px,2vw,26px);position:relative}
+footer.ft{border-top:1px solid var(--bd);padding:70px 0 40px}.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}.fg h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin-bottom:14px;font-weight:500}.fg a{display:block;padding:3px 0;transition:color .3s}.fg a:hover{color:var(--li)}
+.fb2{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:60px;color:var(--mu);font-size:14px}
+@media(max-width:799px){.fg{grid-template-columns:1fr 1fr}.fg>div:first-child{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body><div id="app"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+/* ===== Central content config: edit everything here. All figures, prices and quotes are placeholders. ===== */
+const C={name:'STUDIO NAME',email:'hello@example.com',wa:'919786213294',phone:'+91 97862 13294',nav:['Work','Services','Process','Pricing','About'],
+stats:[['25+','Websites Assessed'],['12+','Upgrades Delivered'],['5+','Platforms Rebuilt'],['98%','Client Satisfaction']],
+services:[['Security Risk Assessment','Identify potential security risks in legacy PHP websites.'],['PHP & Dependency Upgrades','Upgrade outdated PHP versions and dependencies.'],['Website Modernisation','Modernise existing websites and web applications.'],['Secure Rebuilds','Rebuild outdated platforms with modern technologies.'],['Database & API Security','Improve database, API and application security.'],['Maintenance & Support','Provide ongoing maintenance and technical support.']],
+work:[{n:'Security Audit',ind:'Business Websites',svc:'Risk Assessment',url:'client-site.example/scan',h:75,bg:'#FFFFFF',d:'Reviewing PHP versions, frameworks and dependencies to find what is unsupported or unpatched.'},
+{n:'PHP Upgrade',ind:'Web Applications',svc:'Version & Dependency Upgrade',url:'client-app.example/upgrade',h:165,bg:'#EFF6FF',d:'Moving an unsupported PHP version and its dependencies to a maintained release.'},
+{n:'Platform Rebuild',ind:'Legacy Platforms',svc:'Secure Rebuild',url:'legacy-site.example/rebuild',h:210,bg:'#FFFFFF',d:'Replacing a fragile legacy platform with a modern, maintainable technology stack.'},
+{n:'API Hardening',ind:'Internal Systems',svc:'Database & API Security',url:'internal-app.example/api',h:330,bg:'#EFF6FF',d:'Strengthening database access, API endpoints and application logic in an existing system.'}],
+why:[['Assess First','We review your PHP version, frameworks, dependencies and hosting setup to find real risks before recommending changes.'],['Secure by Default','We upgrade, patch and harden databases, APIs and applications so security is part of the foundation.'],['Built to Last','We modernise or rebuild on maintained technologies, then support the platform with ongoing maintenance.']],
+process:[['Assess','Review of PHP versions, frameworks, dependencies, hosting and code to identify security risks.','repeating-linear-gradient(90deg,#EFF6FF 0 18px,#FFFFFF 18px 36px)'],['Secure','Patching, hardening and upgrading PHP versions, dependencies, databases and APIs.','linear-gradient(135deg,#EFF6FF 40%,rgba(24,119,242,.22))'],['Modernise','Refactoring or rebuilding outdated websites and applications on modern technologies.','repeating-linear-gradient(0deg,#EFF6FF 0 14px,#E5E7EB 14px 15px)'],['Maintain','Monitoring, updates, maintenance and technical support after launch.','radial-gradient(circle at 80% 30%,rgba(24,119,242,.35),#EFF6FF 60%)']],
+tiers:[{n:'Assess',p:'Get in touch'/* hidden for now: $799 */,f:['PHP version and software review','Dependency and framework check','Security risk report','Prioritised recommendations','Review call','Plain-language summary'],cta:'Get a Security Check'},
+{n:'Modernise',p:'Get in touch'/* hidden for now: $1,499 */,rec:1,f:['Everything in Assess','PHP version upgrade','Dependency updates','Database and API hardening','Application security fixes','Testing and release','Post-upgrade support'],cta:'Choose Modernise'},
+{n:'Rebuild',p:'Get in touch'/* hidden for now: $2,499 */,f:['Complete platform rebuild','Modern technology stack','Secure architecture','Database and API security','Data migration','Testing and performance checks','Documentation and handover','Ongoing maintenance option'],cta:'Discuss Your Project'}],
+news:[
+['TechCrunch','24 Oct 2026','Engine flaw','Two flaws in the PHP engine let attackers run code on a server with no password. Amazon saw exploitation about a week before patches shipped, and banks, retailers and hospitals took sites offline to update.','https://techcrunch.com/2026/10/24/php-ocalypse-how-two-critical-web-bugs-almost-broke-the-internet/'],
+['TechCrunch','27 Oct 2026','Government alert','CISA confirmed the PHP flaws are being exploited and ordered US civilian federal agencies to patch. PHP reportedly runs about 70% of web-facing servers.','https://techcrunch.com/2026/10/27/us-government-says-hackers-are-now-exploiting-critical-php-web-bugs/'],
+['Notebookcheck','25 Oct 2026','Legacy versions','Official fixes cover only PHP 8.2 to 8.5. Scans still found hundreds of thousands of public hosts announcing PHP 5.x or 7.x, though distribution backports mean a version number alone can mislead.','https://notebookcheck.net/PHP2Shell-leaves-millions-of-servers-on-PHP-versions-with-no-official-fix.1433676.0.html'],
+['Fortune','21 Oct 2026','AI-assisted discovery','The vulnerable code had sat in PHP for more than a decade. AI helped researchers turn the weaknesses into a working exploit, and AWS reported broad exploitation by 21 October.','https://fortune.com/2026/10/21/ai-tools-discovered-the-php-vulnerability-that-could-take-down-70-of-the-internet-now-the-race-is-on-to-patch-it-before-ai-powered-hackers-attack/'],
+['Help Net Security','Jun 2024','Ransomware','A command injection flaw in PHP running in CGI mode on Windows was used by the TellYouThePass ransomware gang within days of disclosure.','https://www.helpnetsecurity.com/?p=304146'],
+['SecurityWeek','Jan 2024','Botnet','CISA and the FBI warned of a botnet that scans for Laravel sites with exposed .env files and for a 2017 PHPUnit flaw, harvesting cloud credentials.','https://www.securityweek.com/us-gov-issues-warning-for-androxgh0st-malware-attacks/amp/'],
+['Help Net Security','Oct 2025','E-commerce','Sansec blocked over 250 attempts against Magento and Adobe Commerce stores in a single day, while only 38% of stores had applied the fix.','https://www.helpnetsecurity.com/?p=346060'],
+['Patchstack','Feb 2026','CMS plugins','The WordPress ecosystem logged 11,334 new vulnerabilities in 2025, up 42%, with 91% in plugins. Heavily targeted flaws saw mass exploitation after a median of five hours.','https://patchstack.com/whitepaper/state-of-wordpress-security-in-2026/']],
+faq:[['How do I know if my PHP website is outdated?','If it runs on a PHP version that no longer receives security updates, or relies on unsupported frameworks and old dependencies, it may be exposed. PHP 8.1 reached end of life on 31 December 2025, and 8.2 follows on 31 December 2026. A security check shows exactly what needs attention.'],['What does the free website security check include?','A review of your PHP version, frameworks, dependencies and hosting setup, followed by a plain-language summary of the risks we find.'],['Can you upgrade my existing website instead of rebuilding it?','Often yes. We upgrade PHP versions and dependencies where practical, and recommend a rebuild only when a platform cannot be secured sustainably.'],['Will my website go offline during an upgrade?','We plan upgrades and testing carefully to keep disruption to your live website as low as possible.'],['Do you provide ongoing maintenance?','Yes. We offer ongoing maintenance and technical support to keep your website updated and secure.'],['How do your pricing packages work?','Each package covers a defined scope. Final pricing depends on project scope, complexity, and requirements.'],
+['How do attackers actually break into PHP websites?','Recent incidents fall into four patterns. Flaws in PHP itself: the October 2026 <a href="https://techcrunch.com/2026/10/24/php-ocalypse-how-two-critical-web-bugs-almost-broke-the-internet/" target="_blank" rel="noopener">PHP2Shell bugs</a> allow code execution without a login, and a 2024 <a href="https://www.helpnetsecurity.com/?p=304146" target="_blank" rel="noopener">PHP-CGI flaw</a> was used to deliver ransomware. Forgotten dependencies: a <a href="https://www.securityweek.com/us-gov-issues-warning-for-androxgh0st-malware-attacks/amp/" target="_blank" rel="noopener">botnet</a> hunts for exposed Laravel .env files and an old PHPUnit bug. Plugins and extensions: <a href="https://patchstack.com/whitepaper/state-of-wordpress-security-in-2026/" target="_blank" rel="noopener">91% of new WordPress vulnerabilities</a> in 2025 were in plugins. Shop platforms: <a href="https://www.helpnetsecurity.com/?p=346060" target="_blank" rel="noopener">Magento stores</a> were attacked weeks after a fix existed.'],
+['What happens to PHP versions that no longer get updates?','The PHP project patches only supported branches. For PHP2Shell, official releases covered 8.2 to 8.5, source-only patches were published for 7.4, 8.0 and 8.1, and <a href="https://endoflife.ai/article-php2shell-cve-2026-109618" target="_blank" rel="noopener">nothing was issued for 7.3 and older</a>. Some Linux distributions and paid support vendors backport fixes, so a <a href="https://notebookcheck.net/PHP2Shell-leaves-millions-of-servers-on-PHP-versions-with-no-official-fix.1433676.0.html" target="_blank" rel="noopener">version number alone can mislead</a>. That is why we check the actual build, not just the label.'],
+['How quickly do attackers move once a flaw is public?','Often within hours. Patchstack measured a <a href="https://patchstack.com/whitepaper/state-of-wordpress-security-in-2026/" target="_blank" rel="noopener">median of five hours</a> to mass exploitation for heavily targeted WordPress flaws, and Amazon reported seeing PHP2Shell attempts about a week <em style="font-style:normal">before</em> patches were released. A yearly update is not enough, which is why monitoring and ongoing maintenance matter.']],
+foot:{nav:['Home|#top','Work|#work','Services|#services','About|#about','Pricing|#pricing','Contact|#contact'],svc:['Security Assessment','PHP Upgrades','Website Modernisation','Secure Rebuilds'],soc:[['LinkedIn','https://www.linkedin.com'],['Instagram','https://www.instagram.com'],['Behance','https://www.behance.net'],['Dribbble','https://dribbble.com']]}};
+/* ===== Render ===== */
+const A='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>';
+const ln=t=>t.split('|').map(s=>`<span class="line"><span>${s.replace(/\{(.+?)\}/g,'<span class="a">$1</span>')}</span></span>`).join('');
+const H=t=>`<h2 data-ln>${ln(t)}</h2>`,pad=n=>String(n+1).padStart(2,'0');
+const mock=(h,t)=>`<div class="bf" style="--h:${h}"><div class="bb"><i></i><i></i><i></i><b>${t}</b></div><div class="bd"><div class="sd"><u></u><u></u><u></u><u></u></div><div class="mn"><div class="kp"><s></s><s></s><s></s></div><div class="ch">${[40,65,50,80,60,92,70].map((v,k)=>`<em style="height:${Math.min(95,v+(h*k)%18)}%"></em>`).join('')}</div></div></div></div>`;
+const stm='OLD CODE ISN’T HARMLESS. IT’S A BUSINESS RISK.'.split(' ').map(w=>`<span class="w1"><span${/BUSINESS|RISK/.test(w)?' class="a"':''}>${w}</span></span>`).join('');
+const mail=s=>`https://wa.me/${C.wa}?text=${encodeURIComponent('Hi, I’m interested in: '+s)}`;
+document.getElementById('app').innerHTML=`
+<nav id="nav"><a class="lg" href="#top">[${C.name}]</a><div class="nl">${C.nav.map(n=>`<a href="#${n.toLowerCase()}">${n}</a>`).join('')}</div><div class="nr"><a class="btn p mag" href="#contact">Let’s Talk ${A}</a><button class="bgr" id="bgr" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button></div></nav>
+<div class="menu" id="menu">${C.nav.map(n=>`<a href="#${n.toLowerCase()}">${n}</a>`).join('')}<a href="#contact">Let’s Talk</a></div>
+<main>
+<section class="hero" id="top"><div class="w hi"><div class="ill-h" aria-hidden="true"><svg viewBox="0 0 520 250" fill="none" stroke="#111827" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g class="crt"><path d="M150 62 L168 70 Q178 74 178 86 V118 Q178 128 168 132 L150 140 Z" fill="#111827"/><rect x="28" y="48" width="126" height="96" rx="20" fill="#fff"/><rect x="42" y="61" width="98" height="68" rx="13" fill="#64748B"/><path d="M54 61 L74 82 L62 90 L90 100 L80 112 L96 129 M112 61 L106 78 L120 88 L110 102 L124 129" stroke="#fff" stroke-width="3"/><circle cx="118" cy="137" r="2.6" fill="#111827"/><path d="M34 146 H148 L140 160 H42 Z" fill="#111827"/><path d="M16 62 Q20 44 40 38" stroke-width="2"/></g><text x="91" y="206" text-anchor="middle" font-size="14" fill="#64748B" font-family="Space Grotesk,Inter,system-ui,sans-serif" font-weight="500" stroke="none">Legacy site</text><path d="M196 104 H254 M243 93 L255 104 L243 115" stroke="#1877F2" stroke-width="4"/><path d="M222 66 V82 M214 74 H230" stroke="#1877F2" stroke-width="3"/><rect x="272" y="36" width="224" height="140" rx="16" fill="#fff"/><path d="M272 62 H496"/><g fill="#111827" stroke="none"><circle cx="288" cy="49" r="3.5"/><circle cx="300" cy="49" r="3.5"/><circle cx="312" cy="49" r="3.5"/></g><rect x="288" y="74" width="192" height="44" rx="8" fill="#1877F2"/><path d="M300 90 H372 M300 102 H344" stroke="#fff" stroke-width="4"/><g fill="#EFF6FF" stroke-width="2.5"><rect x="288" y="128" width="58" height="34" rx="6"/><rect x="352" y="128" width="58" height="34" rx="6"/><rect x="416" y="128" width="58" height="34" rx="6"/></g><text x="384" y="206" text-anchor="middle" font-size="14" fill="#1877F2" font-family="Space Grotesk,Inter,system-ui,sans-serif" font-weight="500" stroke="none">Modern tech stack</text><g class="chip"><rect x="258" y="18" width="58" height="24" rx="12" fill="#fff" stroke-width="2.5"/><text x="287.0" y="34" text-anchor="middle" font-size="12" fill="#111827" font-family="Space Grotesk,Inter,system-ui,sans-serif" font-weight="500" stroke="none">React</text></g><g class="chip"><rect x="428" y="14" width="68" height="24" rx="12" fill="#fff" stroke-width="2.5"/><text x="462.0" y="30" text-anchor="middle" font-size="12" fill="#111827" font-family="Space Grotesk,Inter,system-ui,sans-serif" font-weight="500" stroke="none">Next.js</text></g><g class="chip"><rect x="418" y="166" width="68" height="24" rx="12" fill="#fff" stroke-width="2.5"/><text x="452.0" y="182" text-anchor="middle" font-size="12" fill="#111827" font-family="Space Grotesk,Inter,system-ui,sans-serif" font-weight="500" stroke="none">Node.js</text></g></svg></div><h1 class="h1" data-ln>${ln('Still Running an Old PHP Website?|Your Business Could Be at {Risk}.')}</h1><p class="hp">Outdated PHP versions, unsupported frameworks and unpatched software can expose your website to security risks. We help businesses assess, secure and modernise their digital platforms.</p><div class="cta"><a class="btn p mag" href="#contact">Get a Free Website Security Check ${A}</a><a class="btn mag" href="#services">Explore Our Services</a></div></div></section>
+<section id="intro" style="overflow:clip"><div class="orb" aria-hidden="true"></div><div class="w"><p class="sw" aria-label="Old code isn’t harmless. It’s a business risk.">${stm}</p>
+<div class="in2"><p data-r>[${C.name}] helps businesses assess, secure and modernise legacy PHP websites and web applications. We identify the risks, fix what matters and rebuild what can no longer be maintained safely.</p></div>
+<div class="st4">${C.stats.map(s=>`<div data-r><b class="a">${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div><p class="k note">Placeholder statistics. Replace with real figures.</p></div></section>
+<section id="services"><div class="w">${H('WE SECURE AND|MODERNISE LEGACY|{PHP} PLATFORMS.')}<div class="sg">${C.services.map((s,i)=>`<article class="cd"><span class="ar">${A}</span><span class="k">${pad(i)}</span><div class="ill" aria-hidden="true">${[1,2,3,4,5].map(k=>`<i style="height:${25+((k*(i+2)*17)%65)}%"></i>`).join('')}</div><h3>${s[0]}</h3><p>${s[1]}</p></article>`).join('')}</div></div></section>
+<section id="work" style="padding-bottom:0"><div class="w">${H('HOW WE HELP.|FROM AUDIT TO|{REBUILD}.')}<p class="k note">Sample engagements for layout. Replace with real case studies.</p></div>
+<div class="pw" style="background:${C.work[0].bg}"><div class="tr">${C.work.map((p,i)=>`<article class="pj"><div class="mw">${mock(p.h,p.url)}<div class="ph" style="--h:${p.h}" aria-hidden="true"><s></s><s></s><em></em></div></div><div class="pi"><span class="k">Project ${pad(i)}</span><h3>${p.n}</h3><p>${p.d}</p><span class="tag">${p.ind}</span><span class="tag">${p.svc}</span></div></article>`).join('')}</div></div>
+<div class="w vw"><a class="btn mag" href="${mail('View all projects')}">View All Projects ${A}</a></div><div style="height:clamp(80px,11vw,170px)"></div></section>
+<section id="about" style="overflow:clip"><div class="orb" style="left:-15vw;right:auto;top:auto;bottom:0" aria-hidden="true"></div><div class="w wg"><div>${H('WE LOOK|BEYOND|THE {PATCH}.')}<p data-r>Updates alone rarely fix a legacy platform. We look at the whole stack, from the PHP version to the database, and fix what puts your business at risk.</p></div><div>${C.why.map((f,i)=>`<div class="fb"><span class="n">${pad(i)}</span><div><h3>${f[0]}</h3><p>${f[1]}</p></div></div>`).join('')}</div></div></section>
+<section id="process"><div class="w pp"><div class="pl">${H('FROM LEGACY RISK|TO SECURE|{PLATFORM}.')}<ol><i></i>${C.process.map(s=>`<li>${s[0]}</li>`).join('')}</ol></div><div class="ss">${C.process.map((s,i)=>`<div class="st"><span class="n">${pad(i)}</span><div><h3>${s[0]}</h3><p>${s[1]}</p></div><div class="vz" style="background:${s[2]}"></div></div>`).join('')}</div></div></section>
+<section id="news"><div class="w">${H('HOW PHP SITES|ARE REALLY|{ATTACKED}.')}<p class="k note">Real incidents and research, linked to the original reporting.</p><div class="tt" id="tt" tabindex="0" aria-label="PHP security news">${C.news.map(n=>`<figure class="tc"><span class="k">${n[2]}</span><p>${n[3]}</p><footer><span class="av" aria-hidden="true">${n[0][0]}</span><div>${n[0]}<small>${n[1]}</small></div><a class="btn" href="${n[4]}" target="_blank" rel="noopener" aria-label="Read the ${n[0]} article (opens in a new tab)">Read ${A}</a></footer></figure>`).join('')}</div><div class="ctl"><button class="btn" id="pv" aria-label="Previous article">←</button><button class="btn" id="nx" aria-label="Next article">→</button></div></div></section>
+<section id="pricing" style="padding-top:0"><div class="w">${H('THE RIGHT SECURITY|INVESTMENT FOR YOUR|NEXT {STAGE}.')}<p data-r style="color:var(--mu);margin-top:28px;font-size:19px">Flexible security and modernisation packages built around your platform and risk level. Get in touch and we’ll scope the right one with you.</p>
+<div class="pg">${C.tiers.map(t=>`<article class="pc${t.rec?' rec':''}"><h3>${t.n.toUpperCase()}${t.rec?'<span>Recommended</span>':''}</h3><div class="pr ct">${t.p}</div><ul>${t.f.map(x=>`<li>${x}</li>`).join('')}</ul><a class="btn${t.rec?' p':''} mag" href="${mail(t.n+' plan')}">${t.cta} ${A}</a></article>`).join('')}</div>
+<p class="k note">Pricing is tailored to project scope, complexity and requirements. Get in touch for a quote.</p></div></section>
+<section id="faq" style="padding-top:0"><div class="w"><div class="fl">${H('QUESTIONS,|{ANSWERED}.')}<div style="margin-top:50px">${C.faq.map((f,i)=>`<div class="fa${i?'':' o'}"><button aria-expanded="${i?'false':'true'}"><span>${f[0]}</span><i>+</i></button><div class="ans"><div><p>${f[1]}</p></div></div></div>`).join('')}</div></div></div></section>
+<section class="fin" id="contact"><div class="orb" aria-hidden="true"></div><div class="w">${H('YOUR WEBSITE NEEDS|MORE THAN JUST AN|UPDATE. IT NEEDS|TO BE {SECURE}.')}<p data-r>Let’s assess your existing website and help you move towards a safer, modern digital platform.</p><a class="btn p big mag" href="${mail('Website assessment')}">GET YOUR WEBSITE ASSESSED ${A}</a></div></section>
+</main>
+<footer class="ft"><div class="w"><div class="fg"><div><a class="lg" href="#top" style="font-size:24px">[${C.name}]</a></div><div><h4>Navigation</h4>${C.foot.nav.map(n=>n.split('|')).map(n=>`<a href="${n[1]}">${n[0]}</a>`).join('')}</div><div><h4>Services</h4>${C.foot.svc.map(s=>`<a href="#services">${s}</a>`).join('')}</div><div><h4>Contact</h4><a href="https://wa.me/${C.wa}" target="_blank" rel="noopener">WhatsApp ${C.phone}</a>${C.foot.soc.map(s=>`<a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a>`).join('')}</div></div>
+<div class="fb2"><span>© ${new Date().getFullYear()} [${C.name}]. All rights reserved.</span><a class="btn" href="#top">Back to top ↑</a></div></div></footer>`;
+/* ===== Behaviour (works without animation) ===== */
+document.querySelectorAll('a[href^="https://wa.me"]').forEach(a=>{a.target='_blank';a.rel='noopener'});
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const nav=$('#nav'),menu=$('#menu'),bgr=$('#bgr');let ls;
+addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>40),{passive:true});
+const tog=o=>{menu.classList.toggle('o',o);bgr.setAttribute('aria-expanded',o);bgr.setAttribute('aria-label',o?'Close menu':'Open menu');document.documentElement.style.overflow=o?'hidden':''};
+bgr.onclick=()=>tog(!menu.classList.contains('o'));
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute('href'),el=id==='#top'?document.body:$(id);if(!el)return;e.preventDefault();tog(false);
+ const y=id==='#top'?0:el;ls?ls.scrollTo(y):(y===0?scrollTo({top:0,behavior:rm?'auto':'smooth'}):el.scrollIntoView({behavior:rm?'auto':'smooth'}))});
+const links=$$('.nl a');new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'}).observe&&C.nav.forEach(n=>{});
+{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});C.nav.forEach(n=>{const s=document.getElementById(n.toLowerCase());s&&io.observe(s)})}
+const refresh=()=>window.ScrollTrigger&&ScrollTrigger.refresh();
+$$('.fa button').forEach(b=>b.onclick=()=>{const f=b.parentElement,o=!f.classList.contains('o');f.classList.toggle('o',o);b.setAttribute('aria-expanded',o);setTimeout(refresh,500)});
+const tt=$('#tt');$('#pv').onclick=()=>tt.scrollBy({left:-tt.clientWidth*.7,behavior:rm?'auto':'smooth'});$('#nx').onclick=()=>tt.scrollBy({left:tt.clientWidth*.7,behavior:rm?'auto':'smooth'});
+/* ===== GSAP ===== */
+if(window.gsap&&window.ScrollTrigger&&!rm){try{
+gsap.registerPlugin(ScrollTrigger);
+if(window.Lenis){ls=new Lenis();ls.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>ls.raf(t*1000));gsap.ticker.lagSmoothing(0)}
+gsap.timeline({defaults:{ease:'power3.out'}}).from('.lg',{y:-20,opacity:0,duration:.7}).from('.nl a,.nr>*',{y:-16,opacity:0,stagger:.07,duration:.6},'-=.4')
+ .from('.h1 .line>span',{yPercent:115,duration:1.1,stagger:.12,ease:'power4.out'},'-=.3').from('.hp',{y:24,opacity:0,duration:.8},'-=.6').from('.cta .btn',{y:24,opacity:0,stagger:.1,duration:.7},'-=.5').from('.ill-h',{y:30,opacity:0,scale:.9,duration:1,ease:'back.out(1.4)'},'-=1.1');
+const hs={trigger:'#top',start:'top top',end:'bottom top',scrub:true};
+
+
+$$('[data-ln]:not(.h1)').forEach(h=>gsap.from(h.querySelectorAll('.line>span'),{yPercent:115,duration:1,stagger:.1,ease:'power4.out',scrollTrigger:{trigger:h,start:'top 85%'}}));
+$$('[data-r]').forEach(el=>gsap.from(el,{y:36,opacity:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}}));
+gsap.from('.w1>span',{yPercent:115,duration:.9,stagger:.045,ease:'power3.out',scrollTrigger:{trigger:'.sw',start:'top 80%'}});
+$$('.orb').forEach(o=>gsap.to(o,{yPercent:-25,ease:'none',scrollTrigger:{trigger:o.parentElement,scrub:true}}));
+$$('.cd').forEach((c,i)=>gsap.from(c,{x:i%2?70:-70,y:50,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 90%'}}));
+gsap.from('.fb',{y:40,opacity:0,stagger:.15,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'.fb',start:'top 85%'}});
+gsap.from('.pc',{y:60,opacity:0,stagger:.12,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'.pg',start:'top 85%'}});
+gsap.from('.tc',{x:80,opacity:0,stagger:.12,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'#tt',start:'top 85%'}});
+gsap.to('.fin .btn.big',{scale:1.04,repeat:-1,yoyo:true,duration:1.6,ease:'sine.inOut'});
+const mm=gsap.matchMedia();
+mm.add('(min-width:900px)',()=>{
+ const tr=$('.tr'),pw=$('.pw'),pjs=$$('.pj'),dist=()=>tr.scrollWidth-innerWidth;let cur=0;
+ const tw=gsap.to(tr,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:pw,start:'top top',end:()=>'+='+dist(),pin:true,scrub:.6,anticipatePin:1,invalidateOnRefresh:true,
+  onUpdate:s=>{const i=Math.round(s.progress*(pjs.length-1));if(i!==cur){cur=i;gsap.to(pw,{backgroundColor:C.work[i].bg,duration:.8})}}}});
+ pjs.forEach(p=>{const c={containerAnimation:tw,trigger:p,scrub:true,ease:'none'};
+  gsap.fromTo(p,{scale:.86,opacity:.35},{scale:1,opacity:1,ease:'none',scrollTrigger:{...c,start:'left 95%',end:'left 55%'}});
+  gsap.fromTo(p.querySelector('.ph'),{x:60},{x:-80,ease:'none',scrollTrigger:{...c,start:'left right',end:'right left'}});
+  gsap.fromTo(p.querySelector('.pi'),{x:90},{x:-30,ease:'none',scrollTrigger:{...c,start:'left right',end:'right left'}})});
+ const lis=$$('.pl li'),sts=$$('.st'),line=$('.pl ol i');let cp=-1;
+ const set=i=>{if(i===cp)return;cp=i;lis.forEach((l,k)=>l.classList.toggle('on',k===i));sts.forEach((s,k)=>s.classList.toggle('on',k===i))};set(0);
+ ScrollTrigger.create({trigger:'#process',start:'top top',end:'+=250%',pin:true,onUpdate:s=>{set(Math.min(3,Math.floor(s.progress*4)));gsap.set(line,{scaleY:Math.min(1,s.progress*4/3)})}});
+ if(matchMedia('(hover:hover)').matches)$$('.mag').forEach(b=>{const x=gsap.quickTo(b,'x',{duration:.4,ease:'power3'}),y=gsap.quickTo(b,'y',{duration:.4,ease:'power3'});
+  b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();x((e.clientX-r.left-r.width/2)*.18);y((e.clientY-r.top-r.height/2)*.18)});b.addEventListener('pointerleave',()=>{x(0);y(0)})});
+});
+mm.add('(max-width:899px)',()=>{$$('.pj .mw').forEach(m=>gsap.from(m,{clipPath:'inset(0 0 100% 0)',duration:1,ease:'power3.out',scrollTrigger:{trigger:m,start:'top 85%'}}))});
+document.fonts&&document.fonts.ready.then(refresh);addEventListener('load',refresh);
+}catch(err){console.error(err)}}
+</script></body></html>
